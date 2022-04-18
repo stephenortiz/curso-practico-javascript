@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+  
+    <context:annotation-config/>
+    
+    <context:component-scan base-package="com.pollosbucanero.wsclient"/>
+
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="com.pollosbucanero.wsclient.wsdl"/>
+    </bean>
+    
+    <bean id="clienteOrdenesVenta" class="com.pollosbucanero.wsclient.ClienteOrdenesVenta">
+        <property name="defaultUri" value="http://172.26.95.24:8720/PD910/SalesOrderManager?wsdl"/>
+        <property name="marshaller" ref="jaxb2Marshaller"/>
+        <property name="unmarshaller" ref="jaxb2Marshaller"/>
+    </bean>
+
+</beans>
